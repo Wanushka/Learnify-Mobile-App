@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">164929988968</string>
+    <string name="google_api_key" translatable="false">AIzaSyDkCULqF_38I2sqxTkV2Ax9TaQWm-8TK5g</string>
+    <string name="google_app_id" translatable="false">1:164929988968:android:a1c508b2c2c1db0bcbcedd</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDkCULqF_38I2sqxTkV2Ax9TaQWm-8TK5g</string>
+    <string name="google_storage_bucket" translatable="false">learnifyapp-dfb70.firebasestorage.app</string>
+    <string name="project_id" translatable="false">learnifyapp-dfb70</string>
+</resources>

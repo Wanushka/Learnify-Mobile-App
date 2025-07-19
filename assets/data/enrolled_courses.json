@@ -1,0 +1,286 @@
+{
+  "enrolledCourses": [
+    {
+      "id": "course_1",
+      "title": "Flutter Development Masterclass",
+      "description": "Complete Flutter development course covering widgets, state management, and app deployment. Learn to build beautiful cross-platform mobile applications.",
+      "instructor": "Dr. Sarah Johnson",
+      "thumbnail": "assets/images/flutter_course.png",
+      "progress": 65,
+      "duration": "12 hours",
+      "level": "Intermediate",
+      "rating": 4.8,
+      "price": 89.99,
+      "enrolledDate": "2024-01-15",
+      "lastAccessed": "2024-07-18",
+      "category": "Mobile Development",
+      "skills": ["Flutter", "Dart", "Mobile Apps", "UI/UX"],
+      "lessons": [
+        {
+          "title": "Introduction to Flutter",
+          "type": "video",
+          "url": "https://example.com/flutter-intro",
+          "completed": true,
+          "duration": "15 minutes",
+          "description": "Overview of Flutter framework and its capabilities"
+        },
+        {
+          "title": "Setting Up Development Environment",
+          "type": "video",
+          "url": "https://example.com/flutter-setup",
+          "completed": true,
+          "duration": "20 minutes",
+          "description": "Installing Flutter SDK and IDE setup"
+        },
+        {
+          "title": "Your First Flutter App",
+          "type": "video",
+          "url": "https://example.com/first-app",
+          "completed": true,
+          "duration": "30 minutes",
+          "description": "Creating a simple Hello World application"
+        },
+        {
+          "title": "Understanding Widgets",
+          "type": "video",
+          "url": "https://example.com/widgets",
+          "completed": true,
+          "duration": "25 minutes",
+          "description": "Deep dive into Flutter's widget system"
+        },
+        {
+          "title": "Layouts and Styling",
+          "type": "video",
+          "url": "https://example.com/layouts",
+          "completed": false,
+          "duration": "35 minutes",
+          "description": "Creating responsive layouts and applying styles"
+        },
+        {
+          "title": "State Management Basics",
+          "type": "video",
+          "url": "https://example.com/state-mgmt",
+          "completed": false,
+          "duration": "40 minutes",
+          "description": "Managing application state effectively"
+        }
+      ]
+    },
+    {
+      "id": "course_2",
+      "title": "React Native Fundamentals",
+      "description": "Learn to build cross-platform mobile apps with React Native from scratch. Master components, navigation, and native integrations.",
+      "instructor": "Prof. Michael Chen",
+      "thumbnail": "assets/images/react_native_course.png",
+      "progress": 42,
+      "duration": "10 hours",
+      "level": "Beginner",
+      "rating": 4.6,
+      "price": 79.99,
+      "enrolledDate": "2024-02-20",
+      "lastAccessed": "2024-07-17",
+      "category": "Mobile Development",
+      "skills": ["React Native", "JavaScript", "Mobile Apps", "Redux"],
+      "lessons": [
+        {
+          "title": "Introduction to React Native",
+          "type": "video",
+          "url": "https://example.com/rn-intro",
+          "completed": true,
+          "duration": "18 minutes",
+          "description": "Understanding React Native architecture"
+        },
+        {
+          "title": "Setting Up React Native",
+          "type": "video",
+          "url": "https://example.com/rn-setup",
+          "completed": true,
+          "duration": "22 minutes",
+          "description": "Installing and configuring React Native CLI"
+        },
+        {
+          "title": "Components and JSX",
+          "type": "video",
+          "url": "https://example.com/rn-components",
+          "completed": true,
+          "duration": "28 minutes",
+          "description": "Creating reusable components with JSX"
+        },
+        {
+          "title": "Navigation Between Screens",
+          "type": "video",
+          "url": "https://example.com/rn-navigation",
+          "completed": false,
+          "duration": "32 minutes",
+          "description": "Implementing stack and tab navigation"
+        },
+        {
+          "title": "Working with APIs",
+          "type": "video",
+          "url": "https://example.com/rn-apis",
+          "completed": false,
+          "duration": "25 minutes",
+          "description": "Fetching and displaying data from REST APIs"
+        }
+      ]
+    },
+    {
+      "id": "course_3",
+      "title": "UI/UX Design Principles",
+      "description": "Master the fundamentals of user interface and user experience design. Learn design thinking, prototyping, and user research methods.",
+      "instructor": "Emily Rodriguez",
+      "thumbnail": "assets/images/uiux_course.png",
+      "progress": 88,
+      "duration": "8 hours",
+      "level": "Beginner",
+      "rating": 4.9,
+      "price": 69.99,
+      "enrolledDate": "2024-01-10",
+      "lastAccessed": "2024-07-19",
+      "category": "Design",
+      "skills": ["UI Design", "UX Research", "Figma", "Prototyping"],
+      "lessons": [
+        {
+          "title": "Design Thinking Process",
+          "type": "video",
+          "url": "https://example.com/design-thinking",
+          "completed": true,
+          "duration": "20 minutes",
+          "description": "Understanding the design thinking methodology"
+        },
+        {
+          "title": "User Research Methods",
+          "type": "video",
+          "url": "https://example.com/user-research",
+          "completed": true,
+          "duration": "25 minutes",
+          "description": "Conducting effective user interviews and surveys"
+        },
+        {
+          "title": "Wireframing Techniques",
+          "type": "video",
+          "url": "https://example.com/wireframing",
+          "completed": true,
+          "duration": "30 minutes",
+          "description": "Creating low and high-fidelity wireframes"
+        },
+        {
+          "title": "Prototyping with Figma",
+          "type": "video",
+          "url": "https://example.com/figma-prototyping",
+          "completed": true,
+          "duration": "35 minutes",
+          "description": "Building interactive prototypes in Figma"
+        },
+        {
+          "title": "Usability Testing",
+          "type": "video",
+          "url": "https://example.com/usability-testing",
+          "completed": false,
+          "duration": "28 minutes",
+          "description": "Testing designs with real users"
+        }
+      ]
+    },
+    {
+      "id": "course_4",
+      "title": "Python for Data Science",
+      "description": "Learn Python programming for data analysis, visualization, and machine learning. Work with pandas, numpy, and scikit-learn libraries.",
+      "instructor": "Dr. James Wilson",
+      "thumbnail": "assets/images/python_course.png",
+      "progress": 23,
+      "duration": "15 hours",
+      "level": "Intermediate",
+      "rating": 4.7,
+      "price": 99.99,
+      "enrolledDate": "2024-03-05",
+      "lastAccessed": "2024-07-16",
+      "category": "Data Science",
+      "skills": ["Python", "Pandas", "NumPy", "Machine Learning"],
+      "lessons": [
+        {
+          "title": "Python Fundamentals",
+          "type": "video",
+          "url": "https://example.com/python-basics",
+          "completed": true,
+          "duration": "45 minutes",
+          "description": "Variables, data types, and control structures"
+        },
+        {
+          "title": "Working with NumPy",
+          "type": "video",
+          "url": "https://example.com/numpy-intro",
+          "completed": true,
+          "duration": "38 minutes",
+          "description": "Numerical computing with NumPy arrays"
+        },
+        {
+          "title": "Data Analysis with Pandas",
+          "type": "video",
+          "url": "https://example.com/pandas-basics",
+          "completed": false,
+          "duration": "42 minutes",
+          "description": "Data manipulation and analysis techniques"
+        },
+        {
+          "title": "Data Visualization",
+          "type": "video",
+          "url": "https://example.com/data-viz",
+          "completed": false,
+          "duration": "35 minutes",
+          "description": "Creating charts and plots with matplotlib"
+        }
+      ]
+    },
+    {
+      "id": "course_5",
+      "title": "JavaScript ES6+ Masterclass",
+      "description": "Modern JavaScript programming with ES6+ features and best practices. Learn async programming, modules, and advanced concepts.",
+      "instructor": "Alex Thompson",
+      "thumbnail": "assets/images/javascript_course.png",
+      "progress": 76,
+      "duration": "9 hours",
+      "level": "Intermediate",
+      "rating": 4.5,
+      "price": 59.99,
+      "enrolledDate": "2024-02-01",
+      "lastAccessed": "2024-07-18",
+      "category": "Web Development",
+      "skills": ["JavaScript", "ES6+", "Async Programming", "DOM"],
+      "lessons": [
+        {
+          "title": "ES6 Syntax and Features",
+          "type": "video",
+          "url": "https://example.com/es6-features",
+          "completed": true,
+          "duration": "30 minutes",
+          "description": "Arrow functions, destructuring, and template literals"
+        },
+        {
+          "title": "Promises and Async/Await",
+          "type": "video",
+          "url": "https://example.com/async-js",
+          "completed": true,
+          "duration": "35 minutes",
+          "description": "Handling asynchronous operations effectively"
+        },
+        {
+          "title": "Modules and Classes",
+          "type": "video",
+          "url": "https://example.com/js-modules",
+          "completed": true,
+          "duration": "28 minutes",
+          "description": "Organizing code with ES6 modules and classes"
+        },
+        {
+          "title": "DOM Manipulation",
+          "type": "video",
+          "url": "https://example.com/dom-manipulation",
+          "completed": false,
+          "duration": "25 minutes",
+          "description": "Interacting with HTML elements dynamically"
+        }
+      ]
+    }
+  ]
+}
