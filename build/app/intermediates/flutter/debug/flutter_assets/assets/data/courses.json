@@ -1,0 +1,112 @@
+[
+  {
+    "id": "1",
+    "title": "Flutter Basics",
+    "description": "Learn the basics of Flutter.",
+    "instructor": "John Doe",
+    "thumbnail": "assets/images/flutter_basics.jpg",
+    "progress": 40,
+    "lessons": [
+      {
+        "title": "Introduction to Flutter",
+        "type": "video",
+        "url": "https://youtu.be/DccbE5LZryE?list=PL82uaKJraAILRBFE1XhCyfvu-Fclc6vv1",
+        "completed": false
+      },
+      {
+        "title": "Flutter Widgets",
+        "type": "pdf",
+        "url": "assets/lessons/flutter_widgets.pdf",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Dart Programming",
+    "description": "Master the Dart programming language.",
+    "instructor": "Jane Smith",
+    "thumbnail": "assets/images/dart_programming.jpg",
+    "progress": 25,
+    "lessons": [
+      {
+        "title": "Dart Basics",
+        "type": "video",
+        "url": "https://youtu.be/NtxRx7W6z0s",
+        "completed": false
+      },
+      {
+        "title": "Control Flow in Dart",
+        "type": "pdf",
+        "url": "assets/lessons/control_flow_dart.pdf",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Firebase Integration",
+    "description": "Learn how to integrate Firebase with Flutter.",
+    "instructor": "Alice Johnson",
+    "thumbnail": "assets/images/Firebase_Integration.jpg",
+    "progress": 60,
+    "lessons": [
+      {
+        "title": "Firebase Setup",
+        "type": "video",
+        "url": "https://youtu.be/Jxw6FaA0j3I",
+        "completed": true
+      },
+      {
+        "title": "Authentication with Firebase",
+        "type": "pdf",
+        "url": "assets/lessons/firebase_auth.pdf",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "State Management",
+    "description": "Understand state management in Flutter.",
+    "instructor": "Robert Brown",
+    "thumbnail": "assets/images/State_Management.png",
+    "progress": 80,
+    "lessons": [
+      {
+        "title": "Provider Package",
+        "type": "video",
+        "url": "https://youtu.be/RSwfK2clzkc",
+        "completed": true
+      },
+      {
+        "title": "Bloc Pattern",
+        "type": "pdf",
+        "url": "assets/lessons/bloc_pattern.pdf",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "UI/UX Design in Flutter",
+    "description": "Create beautiful user interfaces with Flutter.",
+    "instructor": "Emily White",
+    "thumbnail": "assets/images/UI_Flutter.jpg",
+    "progress": 50,
+    "lessons": [
+      {
+        "title": "Material Design Principles",
+        "type": "video",
+        "url": "https://youtu.be/yJ29a4E_RR0",
+        "completed": false
+      },
+      {
+        "title": "Theming and Custom Widgets",
+        "type": "pdf",
+        "url": "assets/lessons/flutter_theming.pdf",
+        "completed": true
+      }
+    ]
+  }
+]

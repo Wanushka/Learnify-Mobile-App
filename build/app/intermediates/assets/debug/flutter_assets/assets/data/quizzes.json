@@ -1,0 +1,157 @@
+{
+  "quizzes": [
+    {
+      "id": "q1",
+      "title": "Flutter Basics",
+      "description": "Test your knowledge of Flutter fundamentals",
+      "category": "Mobile Development",
+      "duration": 15,
+      "questions": [
+        {
+          "id": "q1_1",
+          "question": "What is Flutter?",
+          "options": [
+            { "id": "a", "text": "A mobile development framework" },
+            { "id": "b", "text": "A programming language" },
+            { "id": "c", "text": "A database system" },
+            { "id": "d", "text": "An operating system" }
+          ],
+          "correctAnswer": "a",
+          "explanation": "Flutter is Google's UI toolkit for building natively compiled applications."
+        },
+        {
+          "id": "q1_2",
+          "question": "What programming language is used in Flutter?",
+          "options": [
+            { "id": "a", "text": "Java" },
+            { "id": "b", "text": "Dart" },
+            { "id": "c", "text": "Python" },
+            { "id": "d", "text": "JavaScript" }
+          ],
+          "correctAnswer": "b",
+          "explanation": "Dart is the programming language used for Flutter development."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "Dart Programming",
+      "description": "Test your Dart programming skills",
+      "category": "Programming",
+      "duration": 20,
+      "questions": [
+        {
+          "id": "q2_1",
+          "question": "What is Dart?",
+          "options": [
+            { "id": "a", "text": "A markup language" },
+            { "id": "b", "text": "A programming language" },
+            { "id": "c", "text": "A database" },
+            { "id": "d", "text": "A framework" }
+          ],
+          "correctAnswer": "b",
+          "explanation": "Dart is a programming language developed by Google."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "Firebase Basics",
+      "description": "Test your knowledge of Firebase services",
+      "category": "Cloud Services",
+      "duration": 18,
+      "questions": [
+        {
+          "id": "q3_1",
+          "question": "Which of the following is a Firebase service?",
+          "options": [
+            { "id": "a", "text": "Firestore" },
+            { "id": "b", "text": "GraphQL" },
+            { "id": "c", "text": "MongoDB" },
+            { "id": "d", "text": "MySQL" }
+          ],
+          "correctAnswer": "a",
+          "explanation": "Firestore is a NoSQL cloud database provided by Firebase."
+        },
+        {
+          "id": "q3_2",
+          "question": "What type of database does Firebase Firestore use?",
+          "options": [
+            { "id": "a", "text": "SQL-based" },
+            { "id": "b", "text": "NoSQL-based" },
+            { "id": "c", "text": "Graph-based" },
+            { "id": "d", "text": "Relational" }
+          ],
+          "correctAnswer": "b",
+          "explanation": "Firestore is a NoSQL cloud database designed for flexible and scalable data storage."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "State Management",
+      "description": "Evaluate your understanding of Flutter state management",
+      "category": "Mobile Development",
+      "duration": 25,
+      "questions": [
+        {
+          "id": "q4_1",
+          "question": "Which state management approach is built into Flutter?",
+          "options": [
+            { "id": "a", "text": "Provider" },
+            { "id": "b", "text": "Redux" },
+            { "id": "c", "text": "GetX" },
+            { "id": "d", "text": "setState" }
+          ],
+          "correctAnswer": "d",
+          "explanation": "Flutter's setState is the built-in way to manage state in a widget."
+        },
+        {
+          "id": "q4_2",
+          "question": "Which package provides state management using streams?",
+          "options": [
+            { "id": "a", "text": "Provider" },
+            { "id": "b", "text": "Bloc" },
+            { "id": "c", "text": "InheritedWidget" },
+            { "id": "d", "text": "ScopedModel" }
+          ],
+          "correctAnswer": "b",
+          "explanation": "The Bloc package provides state management based on streams and reactive programming."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "UI/UX Design Principles",
+      "description": "Assess your knowledge of UI/UX design principles",
+      "category": "Design",
+      "duration": 30,
+      "questions": [
+        {
+          "id": "q5_1",
+          "question": "What does UX stand for?",
+          "options": [
+            { "id": "a", "text": "User Experience" },
+            { "id": "b", "text": "User Exchange" },
+            { "id": "c", "text": "Universal Experience" },
+            { "id": "d", "text": "User Execution" }
+          ],
+          "correctAnswer": "a",
+          "explanation": "UX stands for User Experience, which focuses on usability and interaction design."
+        },
+        {
+          "id": "q5_2",
+          "question": "Which of the following is an important principle of UI design?",
+          "options": [
+            { "id": "a", "text": "Consistency" },
+            { "id": "b", "text": "Complexity" },
+            { "id": "c", "text": "Randomness" },
+            { "id": "d", "text": "Latency" }
+          ],
+          "correctAnswer": "a",
+          "explanation": "Consistency is crucial in UI design to ensure a seamless user experience across the application."
+        }
+      ]
+    }
+  ]
+}

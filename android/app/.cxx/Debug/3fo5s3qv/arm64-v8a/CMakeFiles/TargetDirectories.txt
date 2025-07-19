@@ -1,0 +1,2 @@
+E:/flutter/Learnify-Mobile-App/android/app/.cxx/Debug/3fo5s3qv/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/flutter/Learnify-Mobile-App/android/app/.cxx/Debug/3fo5s3qv/arm64-v8a/CMakeFiles/rebuild_cache.dir
