@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:learnifyapp/screens/profile_screen.dart';
-import '../screens/dashboard_screen.dart';
-import '../screens/courses_screen.dart';
-import '../screens/quiz_screen.dart';
-import '../widgets/bottom_nav_bar.dart';
+import 'package:learnifyapp/screens/Chatbot/chat_screen.dart';
+import 'package:learnifyapp/screens/profile/profile_screen.dart';
+import '../Home/dashboard_screen.dart';
+import '../Courses/courses_screen.dart';
+import '../Quizzes/quiz_screen.dart';
+import '../../widgets/bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DashboardScreen(),
     CoursesScreen(),
     QuizScreen(),
+    ChatbotScreen(), // New Chat Screen
     ProfileScreen(),
   ];
 
