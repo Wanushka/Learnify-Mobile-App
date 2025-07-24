@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:learnifyapp/screens/profile_screen.dart';
+import 'package:learnifyapp/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:learnifyapp/providers/auth_provider.dart';
 import 'package:learnifyapp/providers/course_provider.dart';
 import 'package:learnifyapp/providers/quiz_provider.dart';
-import 'package:learnifyapp/screens/splash_screen.dart';
-import 'package:learnifyapp/screens/login_screen.dart';
-import 'package:learnifyapp/screens/home_screen.dart';
+import 'package:learnifyapp/screens/auth/splash_screen.dart';
+import 'package:learnifyapp/screens/auth/login_screen.dart';
+import 'package:learnifyapp/screens/auth/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

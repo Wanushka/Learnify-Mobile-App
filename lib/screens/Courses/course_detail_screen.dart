@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learnifyapp/screens/lesson_screen.dart';
-import '../models/course_model.dart';
+import 'package:learnifyapp/screens/Courses/lesson_screen.dart';
+import '../../models/course_model.dart';
 import 'package:provider/provider.dart';
-import '../providers/course_provider.dart';
+import '../../providers/course_provider.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   final Course course;

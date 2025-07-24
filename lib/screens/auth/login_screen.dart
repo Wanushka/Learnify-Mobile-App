@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-import '../services/auth_service.dart';
+import 'package:learnifyapp/screens/auth/signup_screen.dart';
+import '../../services/auth_service.dart';
+import 'home_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
   final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   
   bool _isLoading = false;
   bool _isPasswordVisible = false;
-  bool _isConfirmPasswordVisible = false;
   bool _emailHasError = false;
   bool _passwordHasError = false;
-  bool _confirmPasswordHasError = false;
   String? _emailErrorText;
   String? _passwordErrorText;
-  String? _confirmPasswordErrorText;
   
   late AnimationController _animationController;
   late AnimationController _particleController;
@@ -64,7 +62,6 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     // Add listeners for real-time validation
     emailController.addListener(_validateEmailRealTime);
     passwordController.addListener(_validatePasswordRealTime);
-    confirmPasswordController.addListener(_validateConfirmPasswordRealTime);
   }
 
   @override
@@ -73,7 +70,6 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     _particleController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -107,30 +103,9 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
         _passwordErrorText = null;
       }
     });
-    // Re-validate confirm password when password changes
-    if (confirmPasswordController.text.isNotEmpty) {
-      _validateConfirmPasswordRealTime();
-    }
   }
 
-  void _validateConfirmPasswordRealTime() {
-    final confirmPassword = confirmPasswordController.text;
-    final password = passwordController.text;
-    setState(() {
-      if (confirmPassword.isEmpty) {
-        _confirmPasswordHasError = false;
-        _confirmPasswordErrorText = null;
-      } else if (confirmPassword != password) {
-        _confirmPasswordHasError = true;
-        _confirmPasswordErrorText = 'Passwords do not match';
-      } else {
-        _confirmPasswordHasError = false;
-        _confirmPasswordErrorText = null;
-      }
-    });
-  }
-
-  void signUpUser() async {
+  void loginUser() async {
     // Validate form
     if (emailController.text.trim().isEmpty) {
       setState(() {
@@ -148,46 +123,35 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
       return;
     }
 
-    if (confirmPasswordController.text.isEmpty) {
-      setState(() {
-        _confirmPasswordHasError = true;
-        _confirmPasswordErrorText = 'Please confirm your password';
-      });
-      return;
-    }
-
-    if (_emailHasError || _passwordHasError || _confirmPasswordHasError) return;
-
-    setState(() => _isLoading = true);
+    if (_emailHasError || _passwordHasError) return;
+    
+    setState(() {
+      _isLoading = true;
+    });
 
     try {
-      var user = await _authService.signUp(
+      var user = await _authService.signIn(
         emailController.text.trim(),
         passwordController.text.trim(),
       );
-      
+
+      setState(() {
+        _isLoading = false;
+      });
+
       if (user != null) {
-        _showSuccessSnackBar("Account created successfully! Welcome to Learnify!");
-        await Future.delayed(Duration(seconds: 1));
-        Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      } else {
+        _showErrorSnackBar("Invalid credentials. Please check your email and password.");
       }
     } catch (e) {
-      String errorMessage = "Signup Failed. ";
-      if (e.toString().contains('network-request-failed')) {
-        errorMessage += "Please check your internet connection.";
-      } else if (e.toString().contains('email-already-in-use')) {
-        errorMessage += "Email already exists.";
-      } else if (e.toString().contains('weak-password')) {
-        errorMessage += "Password should be at least 6 characters.";
-      } else if (e.toString().contains('invalid-email')) {
-        errorMessage += "Please enter a valid email.";
-      } else {
-        errorMessage += "Please try again.";
-      }
-      
-      _showErrorSnackBar(errorMessage);
-    } finally {
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+      });
+      _showErrorSnackBar("Login failed. Please try again.");
     }
   }
 
@@ -229,48 +193,10 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     );
   }
 
-  void _showSuccessSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Container(
-          padding: EdgeInsets.symmetric(vertical: 4),
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(Icons.check_circle_outline, color: Colors.white, size: 20),
-              ),
-              SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  message,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        backgroundColor: Color(0xFF4CAF50),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        margin: EdgeInsets.all(16),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false, // Prevents white bar
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -310,43 +236,22 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
                       child: SlideTransition(
                         position: _slideAnimation,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Back Button
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.2),
-                                      width: 1,
-                                    ),
-                                  ),
-                                  child: IconButton(
-                                    icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            SizedBox(height: 40),
                             
-                            SizedBox(height: 20),
-                            
-                            // Logo Section
+                            // Modern Logo Section
                             _buildLogoSection(),
                             
-                            SizedBox(height: 32),
+                            SizedBox(height: 40),
                             
-                            // Sign Up Form Card
-                            _buildSignUpForm(),
+                            // Login Form Card
+                            _buildLoginForm(),
                             
-                            SizedBox(height: 20),
+                            SizedBox(height: 24),
                             
-                            // Login Link
-                            _buildLoginLink(),
+                            // Sign Up Link
+                            _buildSignUpLink(),
                             
                             SizedBox(height: 40),
                           ],
@@ -397,7 +302,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
             alignment: Alignment.center,
             children: [
               Icon(
-                Icons.person_add_rounded,
+                Icons.school_rounded,
                 size: 45,
                 color: Colors.white,
               ),
@@ -433,7 +338,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
         
         // Welcome text
         Text(
-          "Join Learnify",
+          "Welcome Back!",
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w700,
@@ -462,7 +367,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
             ),
           ),
           child: Text(
-            "Start your learning journey today",
+            "Continue your learning journey",
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -475,7 +380,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     );
   }
 
-  Widget _buildSignUpForm() {
+  Widget _buildLoginForm() {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -523,42 +428,46 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
               _buildModernTextField(
                 controller: passwordController,
                 label: "Password",
-                hint: "Create a strong password",
+                hint: "Enter your password",
                 icon: Icons.lock_outline,
                 hasError: _passwordHasError,
                 errorText: _passwordErrorText,
                 isPassword: true,
-                isPasswordVisible: _isPasswordVisible,
-                onPasswordVisibilityToggle: () {
-                  setState(() {
-                    _isPasswordVisible = !_isPasswordVisible;
-                  });
-                },
+              ),
+              
+              SizedBox(height: 12),
+              
+              // Forgot password link
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    // TODO: Implement forgot password
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Forgot password feature coming soon!'),
+                        backgroundColor: Color(0xFF03DAC6),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        behavior: SnackBarBehavior.floating,
+                        margin: EdgeInsets.all(16),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
               ),
               
               SizedBox(height: 20),
               
-              // Confirm Password field
-              _buildModernTextField(
-                controller: confirmPasswordController,
-                label: "Confirm Password",
-                hint: "Re-enter your password",
-                icon: Icons.lock_outline,
-                hasError: _confirmPasswordHasError,
-                errorText: _confirmPasswordErrorText,
-                isPassword: true,
-                isPasswordVisible: _isConfirmPasswordVisible,
-                onPasswordVisibilityToggle: () {
-                  setState(() {
-                    _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                  });
-                },
-              ),
-              
-              SizedBox(height: 24),
-              
-              // Sign Up button
-              _buildSignUpButton(),
+              // Login button
+              _buildLoginButton(),
             ],
           ),
         ),
@@ -574,8 +483,6 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     bool hasError = false,
     String? errorText,
     bool isPassword = false,
-    bool isPasswordVisible = false,
-    VoidCallback? onPasswordVisibilityToggle,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Column(
@@ -603,7 +510,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
           ),
           child: TextFormField(
             controller: controller,
-            obscureText: isPassword && !isPasswordVisible,
+            obscureText: isPassword && !_isPasswordVisible,
             keyboardType: keyboardType,
             style: TextStyle(
               fontSize: 16,
@@ -631,10 +538,14 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
               suffixIcon: isPassword
                   ? IconButton(
                       icon: Icon(
-                        isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                        _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
                         color: Color(0xFF1976D2).withOpacity(0.7),
                       ),
-                      onPressed: onPasswordVisibilityToggle,
+                      onPressed: () {
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
                     )
                   : hasError 
                       ? Icon(Icons.error_outline, color: Color(0xFFE53E3E))
@@ -700,7 +611,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     );
   }
 
-  Widget _buildSignUpButton() {
+  Widget _buildLoginButton() {
     return Container(
       width: double.infinity,
       height: 56,
@@ -720,7 +631,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
         ],
       ),
       child: ElevatedButton(
-        onPressed: _isLoading ? null : signUpUser,
+        onPressed: _isLoading ? null : loginUser,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
@@ -741,13 +652,13 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.person_add_rounded,
+                    Icons.login_rounded,
                     color: Colors.white,
                     size: 22,
                   ),
                   SizedBox(width: 12),
                   Text(
-                    "Create Account",
+                    "Sign In",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -761,7 +672,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
     );
   }
 
-  Widget _buildLoginLink() {
+  Widget _buildSignUpLink() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: BoxDecoration(
@@ -776,7 +687,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Already have an account? ",
+            "New to Learnify? ",
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 15,
@@ -784,7 +695,24 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
             ),
           ),
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    return SlideTransition(
+                      position: animation.drive(
+                        Tween(begin: Offset(1.0, 0.0), end: Offset.zero)
+                            .chain(CurveTween(curve: Curves.easeInOut)),
+                      ),
+                      child: child,
+                    );
+                  },
+                  transitionDuration: Duration(milliseconds: 300),
+                ),
+              );
+            },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(
@@ -796,7 +724,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
                 ),
               ),
               child: Text(
-                "Sign In",
+                "Create Account",
                 style: TextStyle(
                   color: Color(0xFF03DAC6),
                   fontSize: 15,

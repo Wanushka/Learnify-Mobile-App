@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learnifyapp/providers/course_provider.dart';
 import 'package:provider/provider.dart';
-import '../models/course_model.dart';
-import '../widgets/video_player_widget.dart';
-import '../widgets/pdf_viewer_widget.dart';
+import '../../models/course_model.dart';
+import '../../widgets/video_player_widget.dart';
+import '../../widgets/pdf_viewer_widget.dart';
 
 class LessonListScreen extends StatefulWidget {
   final Course course;

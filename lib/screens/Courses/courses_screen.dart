@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:learnifyapp/screens/course_detail_screen.dart';
-import '../models/course_model.dart';
-import '../services/course_service.dart';
-import '../widgets/course_card.dart';
+import 'package:learnifyapp/screens/Courses/course_detail_screen.dart';
+import '../../models/course_model.dart';
+import '../../services/course_service.dart';
+import '../../widgets/course_card.dart';
 import 'package:provider/provider.dart';
-import '../providers/course_provider.dart';
+import '../../providers/course_provider.dart';
 
 class CoursesScreen extends StatefulWidget {
   const CoursesScreen({Key? key}) : super(key: key);

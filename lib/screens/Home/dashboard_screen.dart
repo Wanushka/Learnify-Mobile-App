@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learnifyapp/screens/course_detail_screen.dart';
+import 'package:learnifyapp/screens/Courses/course_detail_screen.dart';
 import 'package:provider/provider.dart';
-import '../providers/course_provider.dart';
-import '../widgets/course_card.dart';
+import '../../providers/course_provider.dart';
+import '../../widgets/course_card.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
